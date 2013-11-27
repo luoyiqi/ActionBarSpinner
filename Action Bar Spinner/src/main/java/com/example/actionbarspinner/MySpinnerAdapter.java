@@ -14,13 +14,15 @@ public class MySpinnerAdapter extends ArrayAdapter<String> {
     private Context mContext;
     private int mLayoutResource;
     private ArrayList<String> mData;
+    private String mTitle;
 
-    public MySpinnerAdapter(Context context, int resource, String[] data) {
+    public MySpinnerAdapter(Context context, int resource, String[] data, String title) {
         super(context, resource, data);
 
         mContext = context;
         mLayoutResource = resource;
         mData = new ArrayList<String>(Arrays.asList(data));
+        mTitle = title;
     }
 
     // This method will return the top item of the spinner, so you want to
@@ -42,15 +44,12 @@ public class MySpinnerAdapter extends ArrayAdapter<String> {
             holder = (TopViewHolder) convertView.getTag();
         }
 
-        // Always use the first item in the list because that is our title.
-        holder.mTitle.setText(mData.get(0));
+        // Always use the title.
+        holder.mTitle.setText(mTitle);
 
         // You don't have to use the .replace() call I just thought the subtitle would be too
         // long otherwise.
-        //
-        // "position + 1" because position 0 is our title, and you don't want
-        // that in the dropdown.
-        holder.mSubtitle.setText(mData.get(position + 1).replace("Sort by ", "").toUpperCase());
+        holder.mSubtitle.setText(mData.get(position).replace("Sort by ", "").toUpperCase());
 
         return convertView;
     }
@@ -73,23 +72,10 @@ public class MySpinnerAdapter extends ArrayAdapter<String> {
             holder = (DropDownViewHolder) convertView.getTag();
         }
 
-        // "position + 1" because position 0 is our title, and you don't want
-        // that in the dropdown.
-        String title = mData.get(position + 1);
-
-        holder.mTitle.setText(title);
+        // Get the string for the dropdown item.
+        holder.mTitle.setText(mData.get(position));
 
         return convertView;
-    }
-
-    @Override
-    public int getCount() {
-        // Our cheat is that the first item in the data is supposed to
-        // always be in the top view, so we actually have one less piece
-        // of data to show in the dropdown list.
-        //
-        // Make sure the class knows it.
-        return mData.size() - 1;
     }
 
     // I use two different ViewHolder classes to keep track of

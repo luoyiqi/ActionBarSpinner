@@ -36,11 +36,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                         actionBar.getThemedContext(),
                         android.R.layout.simple_list_item_1,
                         new String[] {
-                                "Title",
                                 "Sort by Name",
                                 "Sort by Date",
                                 "Sort by Number"
-                        }),
+                        },
+                        "Title"),
                 this);
     }
 
