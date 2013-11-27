@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Action Bar Spinner/Action Bar Spinner.iml" filepath="$PROJECT_DIR$/Action Bar Spinner/Action Bar Spinner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ActionBarSpinner.iml" filepath="$PROJECT_DIR$/ActionBarSpinner.iml" />
+    </modules>
+  </component>
+</project>
+
